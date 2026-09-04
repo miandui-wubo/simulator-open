@@ -90,7 +90,7 @@ def main():
         description="Simulator: liquid metal alloy contact angle parameter search"
     )
     parser.add_argument(
-        "--optimizer", choices=["bayesian", "pso", "ga", "cmaes"], default="pso",
+        "--optimizer", choices=["bayesian", "pso", "ga"], default="pso",
         help="Optimization algorithm (default: pso)"
     )
     parser.add_argument(

@@ -26,22 +26,19 @@
 
 ### 2. `parameter-search/` — 参数搜索算法框架
 
-多智能体液态金属合金热力学参数自主搜索系统：
+实际用于仿真生产的三种参数搜索优化器，统一基于参数空间与目标函数抽象：
 
-- **传统优化**：贝叶斯优化（昂贵仿真评估首选）、遗传算法（DEAP，全局搜索）、
-  粒子群 PSO、CMA-ES、网格/随机搜索 baseline
-- **LLM 辅助搜索**：知识引导的参数范围建议、智能实验设计、异常参数检测
-- **多智能体协作**：探索 agent（并行搜索不同参数区域）+ 开发 agent（局部精修）
-  + 协调 agent
+- **贝叶斯优化**（scikit-optimize，GP）：昂贵仿真评估的首选，样本效率高
+- **遗传算法**（DEAP，SBX 交叉 + 多项式变异）：全局搜索，适合复杂非凸问题
+- **粒子群优化 PSO**：快速收敛，适合中等维度
 
-含独立文档：`METHODOLOGY.md`（方法论）、`USAGE_GUIDE.md`、`QUICKSTART.md`、
-`DROPLET_EXPERIMENT_GUIDE.md`。
+均支持早停收敛判定、GA 热启动种子、逐次评估历史记录。
 
 ### 3. `simulator/` — 批量参数搜索生产管线
 
 把优化器框架应用于多实验批量搜索的工程化管线（COMSOL + MATLAB 真实仿真）：
 
-- **四种优化器批处理脚本**：`run_batch_{bayesian,ga,pso,cmaes}*.sh`，
+- **三种优化器批处理脚本**：`run_batch_{bayesian,ga}*.sh`、`--optimizer pso`，
   支持按阶段顺序执行（`run_sequential_optimizer_batches.sh`）
 - **断点续跑**：批处理按实验粒度持久化进度，中断重启自动跳过已完成实验
 - **GA 热启动**：`SIMULATOR_WARM_START_EXPERIMENTS=exp_XXX` 使未收敛实验
@@ -67,7 +64,7 @@ bash simulator/run_batch_ga_full.sh                    # 或使用封装脚本
 
 ## 环境依赖
 
-- Python ≥ 3.10：`numpy scipy pandas deap cma scikit-learn matplotlib openai`
+- Python ≥ 3.10：`numpy scipy pandas scikit-optimize deap scikit-learn matplotlib openai`
 - COMSOL Multiphysics 6.1（含 LiveLink for MATLAB）
 - MATLAB（批处理模式 `matlab -batch`）
 - 对话助手需 DeepSeek API key：`export DEEPSEEK_API_KEY=sk-...`

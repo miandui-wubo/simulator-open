@@ -19,7 +19,6 @@ from src.core.objective import BaseObjective, OptimizationConverged
 from src.optimizers.bayesian_optimizer import BayesianOptimizer
 from src.optimizers.genetic_algorithm import GeneticAlgorithm
 from src.optimizers.pso_optimizer import ParticleSwarmOptimizer
-from src.optimizers.cmaes_optimizer import CMAESOptimizer
 
 from simulator.config import SimulationConfig
 from simulator.contact_angle_interface import compute_contact_angle
@@ -389,18 +388,6 @@ def run_pipeline(config: SimulationConfig) -> Dict:
             except OptimizationConverged as exc:
                 print(f"[Early Stop] {exc}")
                 best_params = objective.best_params
-    elif config.optimizer == "cmaes":
-        optimizer = CMAESOptimizer(
-            param_space=param_space,
-            objective=objective,
-        )
-        try:
-            best_params = optimizer.optimize(
-                n_iterations=config.max_iterations, verbose=True
-            )
-        except OptimizationConverged as exc:
-            print(f"[Early Stop] {exc}")
-            best_params = objective.best_params
     else:
         raise ValueError(f"Unknown optimizer: {config.optimizer}")
 

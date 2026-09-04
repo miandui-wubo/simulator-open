@@ -3,8 +3,7 @@ set -euo pipefail
 
 # Run optimizer batches sequentially (one phase at a time):
 #   1) Bayesian retry for 19 non-converged experiments
-#   2) CMA-ES full batch (32 experiments)
-#   3) GA full batch (32 experiments)
+#   2) GA full batch (32 experiments)
 #
 # Usage:
 #   bash simulator/run_sequential_optimizer_batches.sh
@@ -48,9 +47,6 @@ log "Master log: $MASTER_LOG"
 
 run_phase "Bayesian retry (19 non-converged)" \
   bash "$SCRIPT_DIR/run_batch_bayesian_retry.sh"
-
-run_phase "CMA-ES full (32 experiments)" \
-  bash "$SCRIPT_DIR/run_batch_cmaes_full.sh"
 
 run_phase "GA full (32 experiments)" \
   bash "$SCRIPT_DIR/run_batch_ga_full.sh"
