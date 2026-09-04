@@ -1,0 +1,191 @@
+# 液滴实验参数搜索配置文件
+# ============================================
+
+# 参数空间定义 (13个参数)
+parameters:
+  # 温度参数
+  left_substrate_temperature:
+    min: 305.0
+    max: 315.0
+    unit: "K"
+    description: "左基板温度"
+    
+  right_substrate_temperature:
+    min: 305.0
+    max: 315.0
+    unit: "K"
+    description: "右基板温度"
+  
+  # 接触角参数
+  left_contact_angle:
+    min: 15.0
+    max: 30.0
+    unit: "deg"
+    description: "左基板接触角"
+    
+  right_contact_angle:
+    min: 15.0
+    max: 30.0
+    unit: "deg"
+    description: "右基板接触角"
+  
+  # 表面张力
+  surface_tension:
+    min: 0.1
+    max: 0.5
+    unit: "N/m"
+    description: "表面张力"
+  
+  # 基板密度
+  left_substrate_density:
+    min: 3000.0
+    max: 7000.0
+    unit: "kg/m³"
+    description: "左基板密度"
+    
+  right_substrate_density:
+    min: 300.0
+    max: 700.0
+    unit: "kg/m³"
+    description: "右基板密度"
+  
+  # 恒压热容
+  left_heat_capacity:
+    min: 300.0
+    max: 700.0
+    unit: "J/(kg·K)"
+    description: "左基板恒压热容"
+    
+  right_heat_capacity:
+    min: 300.0
+    max: 1000.0
+    unit: "J/(kg·K)"
+    description: "右基板恒压热容"
+  
+  # 液滴属性
+  droplet_density:
+    min: 3000.0
+    max: 7000.0
+    unit: "kg/m³"
+    description: "液滴密度"
+    
+  droplet_viscosity:
+    min: 0.1
+    max: 0.3
+    unit: "Pa·s"
+    description: "液滴动力黏度"
+  
+  # 导热系数
+  left_thermal_conductivity:
+    min: 100.0
+    max: 250.0
+    unit: "W/(m·K)"
+    description: "左基板导热系数"
+    
+  right_thermal_conductivity:
+    min: 30.0
+    max: 80.0
+    unit: "W/(m·K)"
+    description: "右基板导热系数"
+
+# 实验数据 (请根据实际实验结果修改)
+experimental_data:
+  droplet_velocity: 0.05        # m/s - 液滴迁移速度
+  migration_distance: 0.002     # m - 迁移距离
+  final_position: 0.008         # m - 最终位置
+  migration_time: 5.0           # s - 迁移时间
+  temperature_gradient: 2.0     # K/mm - 温度梯度
+
+# 观测量权重 (用于计算加权误差)
+weights:
+  droplet_velocity: 0.30
+  migration_distance: 0.25
+  final_position: 0.20
+  migration_time: 0.15
+  temperature_gradient: 0.10
+
+# 优化器配置
+optimizer:
+  method: "bayesian"  # bayesian, genetic, pso, multi_agent, llm
+  
+  # 贝叶斯优化设置
+  bayesian:
+    n_initial_points: 15
+    acquisition_func: "EI"  # EI, PI, LCB
+    n_iterations: 50
+  
+  # 遗传算法设置
+  genetic:
+    population_size: 50
+    crossover_prob: 0.7
+    mutation_prob: 0.2
+    n_generations: 100
+  
+  # 粒子群优化设置
+  pso:
+    n_particles: 30
+    w: 0.7
+    c1: 1.5
+    c2: 1.5
+    n_iterations: 100
+  
+  # 多智能体设置
+  multi_agent:
+    n_explorers: 5
+    n_exploiters: 3
+    communication_interval: 5
+    max_iterations: 150
+  
+  # LLM辅助设置
+  llm:
+    model: "gpt-4"
+    n_iterations: 30
+    check_reasonableness: true
+
+# 仿真器配置
+simulator:
+  type: "mock"  # mock, comsol, openfoam, custom
+  
+  # COMSOL配置
+  comsol:
+    model_file: "droplet_model.mph"
+    timeout: 3600  # 秒
+  
+  # OpenFOAM配置
+  openfoam:
+    case_dir: "droplet_case"
+    solver: "interFoam"
+
+# 文献参考值 (用于初始化和验证)
+reference_values:
+  # GaInSn液滴
+  GaInSn:
+    density: 6440.0        # kg/m³
+    viscosity: 0.0024      # Pa·s
+    surface_tension: 0.718 # N/m
+  
+  # Si基板
+  Si:
+    density: 2329.0
+    thermal_conductivity: 150.0
+    heat_capacity: 710.0
+  
+  # GaN基板
+  GaN:
+    density: 5800.0
+    thermal_conductivity: 130.0
+    heat_capacity: 600.0
+
+# 收敛判据
+convergence:
+  threshold: 0.01     # 相对误差阈值
+  patience: 20        # 无改进容忍次数
+  min_iterations: 20  # 最小迭代次数
+
+# 输出配置
+output:
+  save_history: true
+  save_plots: true
+  verbose: true
+  output_dir: "results"
+
