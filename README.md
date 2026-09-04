@@ -11,7 +11,6 @@ LLM 多智能体 × COMSOL/MATLAB/LAMMPS 联合仿真 × 参数逆向搜索
 [![MATLAB](https://img.shields.io/badge/MATLAB-batch%20mode-E16737?style=flat-square&logo=mathworks&logoColor=white)](https://www.mathworks.com/)
 [![Platform](https://img.shields.io/badge/Platform-Windows-blue?style=flat-square&logo=windows)]()
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](./LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](./CONTRIBUTING.md)
 
 [简介](#-简介) · [系统架构](#-系统架构) · [快速开始](#-快速开始) · [目录结构](#-目录结构)
 
@@ -116,13 +115,6 @@ simulator-open/
 ├── contact-angle/        # 📐 点云接触角计算（PCA）
 └── input/                # 实验定义（自行准备，不入库）
 ```
-
-## 🤝 贡献
-
-欢迎 Issue 与 PR！提交前请确保：
-
-- [ ] 代码通过 `python -m py_compile` 检查
-- [ ] 不引入数据文件、仿真产物或密钥（API key 一律走环境变量）
 
 ## 📄 许可证
 
