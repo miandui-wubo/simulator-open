@@ -132,7 +132,7 @@ simulator-open/
 - 语言模型检查点（checkpoint）
 - 完整的编排环境
 
-如需获取上述材料，请联系通讯作者：**[zhenyuwang@ss.pku.edu.cn](mailto:zhenyuwang@ss.pku.edu.cn)**（在合理请求下提供）。
+如需获取上述材料，请联系通讯作者：**[zw@ss.pku.edu.cn](mailto:zw@ss.pku.edu.cn)**（在合理请求下提供）。
 
 ## 📝 引用
 

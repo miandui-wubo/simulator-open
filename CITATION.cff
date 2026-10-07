@@ -5,7 +5,7 @@ type: software
 authors:
   - alias: miandui-wubo
 contact:
-  - email: zhenyuwang@ss.pku.edu.cn
+  - email: zw@ss.pku.edu.cn
 repository-code: "https://github.com/miandui-wubo/simulator-open"
 abstract: >-
   Code accompanying the manuscript "Measurement-operator auditing in an

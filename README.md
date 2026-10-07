@@ -131,7 +131,7 @@ The following materials are **not included** in this repository:
 - The language-model checkpoint
 - The full orchestration environment
 
-These materials are available from the corresponding author upon reasonable request: **[zhenyuwang@ss.pku.edu.cn](mailto:zhenyuwang@ss.pku.edu.cn)**.
+These materials are available from the corresponding author upon reasonable request: **[zw@ss.pku.edu.cn](mailto:zw@ss.pku.edu.cn)**.
 
 ## 📝 Citation
 
