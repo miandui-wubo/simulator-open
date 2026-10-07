@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "Simulator: Autonomous Simulation and Parameter Search System for Droplet Contact Angles"
+type: software
+authors:
+  - alias: miandui-wubo
+contact:
+  - email: zhenyuwang@ss.pku.edu.cn
+repository-code: "https://github.com/miandui-wubo/simulator-open"
+abstract: >-
+  Code accompanying the manuscript "Measurement-operator auditing in an
+  automated gallium droplet simulation and derivative-free optimization
+  workflow" (under review). The workflow couples an LLM multi-agent
+  simulation assistant with COMSOL/MATLAB co-simulation and derivative-free
+  optimizers (Bayesian optimization, genetic algorithm and particle swarm
+  optimization) to invert 13 physical parameters so that simulated droplet
+  contact angles match experimental measurements, with point-cloud
+  contact-angle calculation (PCA) as post-processing.
+keywords:
+  - COMSOL
+  - contact angle
+  - gallium
+  - liquid metal
+  - derivative-free optimization
+  - Bayesian optimization
+  - genetic algorithm
+  - particle swarm optimization
+  - LLM agents
+license: MIT
+version: 1.0.0
+date-released: "2026-10-07"
