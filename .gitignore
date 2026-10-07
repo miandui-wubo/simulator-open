@@ -11,3 +11,5 @@ input/
 comsol_work/model/matlab_checkpoint-*/
 comsol_work/model/matlab_input.jsonl
 comsol_work/model/matlab_output.jsonl
+contact-angle/data/
+contact-angle/results/

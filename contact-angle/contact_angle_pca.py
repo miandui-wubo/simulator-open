@@ -391,11 +391,13 @@ class ContactAngleCalculator:
 
 def main():
     """主函数"""
-    # 输入文件路径
-    input_file = "/Users/wubo/Downloads/contact-angle/接触角测量及前后资料/仿真相关/纯镓/Ga_Si_GaN_30_30.txt"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+
+    # 输入文件路径（COMSOL 导出的点云 txt 需自行放入 data/ 目录）
+    input_file = os.path.join(script_dir, "data", "Ga_Si_GaN_30_30.txt")
     
     # 输出目录
-    output_dir = "/Users/wubo/Downloads/contact-angle/results"
+    output_dir = os.path.join(script_dir, "results")
     
     # 创建计算器实例
     calculator = ContactAngleCalculator(

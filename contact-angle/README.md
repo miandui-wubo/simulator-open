@@ -46,11 +46,16 @@ calculator = ContactAngleCalculator(
 
 ### 修改输入文件
 
-修改 `main()` 函数中的路径：
+默认路径均相对于脚本所在目录（`contact-angle/`），可从任意工作目录运行：
+
+- 输入：`data/Ga_Si_GaN_30_30.txt`（请将 COMSOL 导出的点云 txt 放入 `data/` 目录）
+- 输出：`results/`
+
+如需处理其他文件，修改 `main()` 函数中的文件名：
 
 ```python
-input_file = "/path/to/your/data.txt"
-output_dir = "/path/to/output/directory"
+input_file = os.path.join(script_dir, "data", "your_data.txt")
+output_dir = os.path.join(script_dir, "results")
 ```
 
 ## 输入文件格式
